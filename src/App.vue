@@ -3,26 +3,27 @@
     <v-main>
       <v-container>
         <v-badge offset-x="20" offset-y="20" overlap color="rgba(0,0,0,0)">
-          <!-- クリックイベントを発生させるためのボタン -->
+          <!-- 削除クリックイベントを発生させるためのボタン -->
           <v-btn
             slot="badge"
             color="grey white--text"
             class="delete-button"
             fab
+            height="20"
+            width="20"
             @click="onClickDelete"
           >
             <!-- ×アイコン -->
             <v-icon small>fas fa-times</v-icon>
           </v-btn>
           <!-- 画像描画領域 -->
-          <v-avatar size="80" class="mb-3 avatar">
+          <v-avatar size="80" class="mb-3 avatar" @click="onClickImage">
             <!-- プロフィール画像 -->
             <img
               ref="fileInput"
-              :src="imageUrl"
+              src="@/assets/logo.png"
               alt="avatarImage"
               class="avatar-image"
-              @click="onCickImage"
             />
           </v-avatar>
         </v-badge>
@@ -33,9 +34,6 @@
 
 <script>
 export default {
-  data: () => ({
-    //
-  }),
   methods: {
     onClickImage: function () {
       alert("click image");
@@ -47,12 +45,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.avatar {
+  cursor: pointer;
+  background-color: #eee;
+}
 .avatar-image {
   object-fit: cover;
-}
-.delete-button {
-  width: 20px;
-  height: 20px;
 }
 </style>
